@@ -15,9 +15,9 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Infrastructure", "Infrastru
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "UI", "UI", "{26CC6EB9-92B8-407D-AFFF-7A025E892DB3}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.LeaveManagement.Domain", "Company.LeaveManagement.Domain\Company.LeaveManagement.Domain.csproj", "{F802DEA3-7B81-494F-BD27-3CDABD5D75F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.LeaveManagement.Domain", "Company.LeaveManagement.Domain\Company.LeaveManagement.Domain.csproj", "{F802DEA3-7B81-494F-BD27-3CDABD5D75F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Company.LeaveManagement.Application", "Company.LeaveManagement.Application\Company.LeaveManagement.Application.csproj", "{EA3B87C3-E662-4321-9476-060E76D54BBD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Company.LeaveManagement.Application", "Company.LeaveManagement.Application\Company.LeaveManagement.Application.csproj", "{EA3B87C3-E662-4321-9476-060E76D54BBD}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
