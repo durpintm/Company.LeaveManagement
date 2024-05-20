@@ -9,9 +9,9 @@ namespace Company.LeaveManagement.Application.Profiles
     {
         public MappingProfile()
         {
-            CreateMap<LeaveRequest, LeaveRequestDto>().ReverseMap();
+            CreateMap<LeaveRequest, DTOs.LeaveRequest.LeaveRequestDto>().ReverseMap();
             CreateMap<LeaveRequest, LeaveRequestListDto>().ReverseMap();
-            CreateMap<LeaveAllocation, LeaveAllocationDto>().ReverseMap();
+            CreateMap<LeaveAllocation, DTOs.LeaveRequestDto>().ReverseMap();
             CreateMap<LeaveType, LeaveTypeDto>().ReverseMap();
 
         }
