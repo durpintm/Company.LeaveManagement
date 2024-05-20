@@ -3,11 +3,6 @@ using Company.LeaveManagement.Application.DTOs.LeaveType;
 using Company.LeaveManagement.Application.Features.LeaveTypes.Requests.Queries;
 using Company.LeaveManagement.Application.Persistence.Contracts;
 using MediatR;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Company.LeaveManagement.Application.Features.LeaveTypes.Handlers.Queries
 {
