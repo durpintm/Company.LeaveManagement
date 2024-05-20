@@ -1,5 +1,5 @@
 ﻿using AutoMapper;
-using Company.LeaveManagement.Application.DTOs;
+using Company.LeaveManagement.Application.DTOs.LeaveType;
 using Company.LeaveManagement.Application.Features.LeaveTypes.Requests.Queries;
 using Company.LeaveManagement.Application.Persistence.Contracts;
 using MediatR;
