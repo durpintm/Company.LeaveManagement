@@ -1,6 +1,6 @@
 ﻿namespace Company.LeaveManagement.Application.Persistence.Contracts
 {
-    internal interface IGenericRepository<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         Task<T> Get(int id);
         Task<IReadOnlyList<T>> GetAll();
