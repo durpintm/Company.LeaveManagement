@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Company.LeaveManagement.Application.DTOs.LeaveType.Validators;
 using Company.LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
 using Company.LeaveManagement.Application.Persistence.Contracts;
 using Company.LeaveManagement.Domain;
@@ -19,6 +20,13 @@ namespace Company.LeaveManagement.Application.Features.LeaveTypes.Handlers.Comma
 
         public async Task<int> Handle(CreateLeaveTypeCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateLeaveTypeDtoValidator();
+            var validationResult = await validator.ValidateAsync(request.LeaveTypeDto);
+
+            if (!validationResult.IsValid)
+            {
+                throw new Exception();
+            }
             var leaveType = _mapper.Map<LeaveType>(request.LeaveTypeDto);
             leaveType = await _leaveTypeRepository.Add(leaveType);
             return leaveType.Id;
