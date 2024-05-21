@@ -12,6 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\Company.LeaveManagement.Application\Company.LeaveManagement.Application.csproj" />
     <ProjectReference Include="..\Company.LeaveManagement.Domain\Company.LeaveManagement.Domain.csproj" />
   </ItemGroup>
 
