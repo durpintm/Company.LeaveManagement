@@ -16,4 +16,8 @@
     <ProjectReference Include="..\Company.LeaveManagement.Domain\Company.LeaveManagement.Domain.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Responses\" />
+  </ItemGroup>
+
 </Project>

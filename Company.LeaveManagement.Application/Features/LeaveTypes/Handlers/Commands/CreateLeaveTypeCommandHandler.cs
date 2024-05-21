@@ -1,5 +1,6 @@
 ﻿using AutoMapper;
 using Company.LeaveManagement.Application.DTOs.LeaveType.Validators;
+using Company.LeaveManagement.Application.Exceptions;
 using Company.LeaveManagement.Application.Features.LeaveTypes.Requests.Commands;
 using Company.LeaveManagement.Application.Persistence.Contracts;
 using Company.LeaveManagement.Domain;
@@ -25,7 +26,7 @@ namespace Company.LeaveManagement.Application.Features.LeaveTypes.Handlers.Comma
 
             if (!validationResult.IsValid)
             {
-                throw new Exception();
+                throw new ValidationException(validationResult);
             }
             var leaveType = _mapper.Map<LeaveType>(request.LeaveTypeDto);
             leaveType = await _leaveTypeRepository.Add(leaveType);

@@ -3,11 +3,11 @@ using FluentValidation;
 
 namespace Company.LeaveManagement.Application.DTOs.LeaveAllocation.Validators
 {
-    public class CreateLeaveRequestDtoValidator: AbstractValidator<CreateLeaveAllocationDto>
+    public class CreateLeaveAllocationDtoValidator: AbstractValidator<CreateLeaveAllocationDto>
     {
         private readonly ILeaveAllocationRepository _leaveAllocationRepository;
 
-        public CreateLeaveRequestDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
+        public CreateLeaveAllocationDtoValidator(ILeaveAllocationRepository leaveAllocationRepository)
         {
             _leaveAllocationRepository = leaveAllocationRepository;
 

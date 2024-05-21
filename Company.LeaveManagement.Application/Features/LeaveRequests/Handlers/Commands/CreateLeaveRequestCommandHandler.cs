@@ -1,4 +1,6 @@
 ﻿using AutoMapper;
+using Company.LeaveManagement.Application.DTOs.LeaveRequest.Validators;
+using Company.LeaveManagement.Application.Exceptions;
 using Company.LeaveManagement.Application.Features.LeaveRequests.Requests.Commands;
 using Company.LeaveManagement.Application.Persistence.Contracts;
 using Company.LeaveManagement.Domain;
@@ -19,6 +21,13 @@ namespace Company.LeaveManagement.Application.Features.LeaveRequests.Handlers.Co
 
         public async Task<int> Handle(CreateLeaveRequestCommand request, CancellationToken cancellationToken)
         {
+            var validator = new CreateLeaveRequestDtoValidator(_leaveRequestRepository);
+            var validationResult = await validator.ValidateAsync(request.LeaveRequestDto);
+
+            if (!validationResult.IsValid)
+            {
+                throw new ValidationException(validationResult);
+            }
             var leaveRequest = _mapper.Map<LeaveRequest>(request.LeaveRequestDto);
             leaveRequest = await _leaveRequestRepository.Add(leaveRequest);
             return leaveRequest.Id;
