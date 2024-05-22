@@ -1,6 +1,6 @@
 ﻿using Company.LeaveManagement.Domain;
 
-namespace Company.LeaveManagement.Application.Persistence.Contracts
+namespace Company.LeaveManagement.Application.Contracts.Persistence
 {
     public interface ILeaveRequestRepository: IGenericRepository<LeaveRequest>
     {

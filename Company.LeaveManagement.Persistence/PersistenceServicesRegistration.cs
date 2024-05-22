@@ -1,13 +1,8 @@
-﻿using Company.LeaveManagement.Application.Persistence.Contracts;
+﻿using Company.LeaveManagement.Application.Contracts.Persistence;
 using Company.LeaveManagement.Persistence.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Company.LeaveManagement.Persistence
 {
