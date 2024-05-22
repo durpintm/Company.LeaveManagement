@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Company.LeaveManagement.Persistence.Repositories
 {
-    internal class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
         private readonly LeaveManagementDbContext _dbContext;
 
