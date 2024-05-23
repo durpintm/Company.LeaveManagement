@@ -22,7 +22,7 @@ namespace Company.LeaveManagement.API.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<LeaveRequestDto>>> Get()
+        public async Task<ActionResult<List<LeaveRequestListDto>>> Get()
         {
             var leaveRequests = await _mediator.Send(new GetLeaveRequestListRequest());
             return Ok(leaveRequests);

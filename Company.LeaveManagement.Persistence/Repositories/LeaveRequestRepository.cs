@@ -28,7 +28,7 @@ namespace Company.LeaveManagement.Persistence.Repositories
             
         }
 
-        public async Task<List<LeaveRequest>> GetLeaveRequestWithDetails()
+        public async Task<List<LeaveRequest>> GetLeaveRequestsWithDetails()
         {
             var leaveRequests = await _dbContext.LeaveRequests.Include(q => q.LeaveType).ToListAsync();
             return leaveRequests;
