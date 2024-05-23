@@ -37,7 +37,7 @@ namespace Company.LeaveManagement.API.Controllers
         }
 
         [HttpPost]
-        public async Task<IActionResult> Post([FromBody] CreateLeaveRequestDto leaveRequest)
+        public async Task<ActionResult<BaseCommandResponse>> Post([FromBody] CreateLeaveRequestDto leaveRequest)
         {
             var command = new CreateLeaveRequestCommand { LeaveRequestDto = leaveRequest };
             var response = await _mediator.Send(command);

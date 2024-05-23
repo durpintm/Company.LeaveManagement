@@ -1,4 +1,5 @@
 using Company.LeaveManagement.MVC.Services.Base;
+using Hanssens.Net;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -6,7 +7,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("https://localhost:44312"));
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
-
+builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
 
 builder.Services.AddControllersWithViews();
 
