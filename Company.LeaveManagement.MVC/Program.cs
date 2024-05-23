@@ -1,4 +1,5 @@
 using Company.LeaveManagement.MVC.Contracts;
+using Company.LeaveManagement.MVC.Services;
 using Company.LeaveManagement.MVC.Services.Base;
 using Hanssens.Net;
 using HR.LeaveManagement.MVC.Services;
@@ -11,6 +12,8 @@ builder.Services.AddHttpClient<IClient, Client>(cl => cl.BaseAddress = new Uri("
 builder.Services.AddAutoMapper(Assembly.GetExecutingAssembly());
 builder.Services.AddSingleton<ILocalStorage, LocalStorage>();
 builder.Services.AddScoped<ILeaveTypeService, LeaveTypeService>();
+builder.Services.AddScoped<ILeaveAllocationService, LeaveAllocationService>();
+builder.Services.AddScoped<ILeaveRequestService, LeaveRequestService>();
 
 builder.Services.AddControllersWithViews();
 
