@@ -17,16 +17,15 @@ namespace Company.LeaveManagement.Application.Features.LeaveTypes.Handlers.Comma
             _mapper = mapper;
         }
 
-        public async Task<Unit> Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
+        async Task IRequestHandler<DeleteLeaveTypeCommand>.Handle(DeleteLeaveTypeCommand request, CancellationToken cancellationToken)
         {
             var leaveType = await _leaveTypeRepository.Get(request.Id);
 
-            if (leaveType ==null)
+            if (leaveType == null)
             {
                 throw new NotFoundException(nameof(leaveType), request.Id);
             }
             await _leaveTypeRepository.Delete(leaveType);
-            return Unit.Value;
         }
     }
 }

@@ -6,7 +6,7 @@ using MediatR;
 
 namespace Company.LeaveManagement.Application.Features.LeaveAllocation.Handlers.Commands
 {
-    public class DeleteLeaveAllocationCommandHandler: IRequestHandler<DeleteLeaveAllocationCommand>
+    public class DeleteLeaveAllocationCommandHandler : IRequestHandler<DeleteLeaveAllocationCommand>
     {
         private readonly ILeaveAllocationRepository _LeaveAllocationRepository;
         private readonly IMapper _mapper;
@@ -17,8 +17,21 @@ namespace Company.LeaveManagement.Application.Features.LeaveAllocation.Handlers.
             _mapper = mapper;
         }
 
-        public async Task<Unit> Handle(DeleteLeaveAllocationCommand request, CancellationToken cancellationToken)
+        //public async Task<Unit> Handle(DeleteLeaveAllocationCommand request, CancellationToken cancellationToken)
+        //{
+        //    var leaveAllocation = await _LeaveAllocationRepository.Get(request.Id);
+
+        //    if (leaveAllocation == null)
+        //    {
+        //        throw new NotFoundException(nameof(leaveAllocation), request.Id);
+        //    }
+        //    await _LeaveAllocationRepository.Delete(leaveAllocation);
+        //    return Unit.Value;
+        //}
+
+        async Task IRequestHandler<DeleteLeaveAllocationCommand>.Handle(DeleteLeaveAllocationCommand request, CancellationToken cancellationToken)
         {
+
             var leaveAllocation = await _LeaveAllocationRepository.Get(request.Id);
 
             if (leaveAllocation == null)
@@ -26,7 +39,6 @@ namespace Company.LeaveManagement.Application.Features.LeaveAllocation.Handlers.
                 throw new NotFoundException(nameof(leaveAllocation), request.Id);
             }
             await _LeaveAllocationRepository.Delete(leaveAllocation);
-            return Unit.Value;
         }
     }
 }

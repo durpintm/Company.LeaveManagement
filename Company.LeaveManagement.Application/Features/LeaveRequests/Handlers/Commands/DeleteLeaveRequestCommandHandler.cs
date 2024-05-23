@@ -16,9 +16,9 @@ namespace Company.LeaveManagement.Application.Features.LeaveRequests.Handlers.Co
         {
             _LeaveRequestRepository = LeaveRequestRepository;
             _mapper = mapper;
-        }
+        }        
 
-        public async Task<Unit> Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
+        async Task IRequestHandler<DeleteLeaveRequestCommand>.Handle(DeleteLeaveRequestCommand request, CancellationToken cancellationToken)
         {
             var leaveRequest = await _LeaveRequestRepository.Get(request.Id);
 
@@ -28,7 +28,7 @@ namespace Company.LeaveManagement.Application.Features.LeaveRequests.Handlers.Co
             }
 
             await _LeaveRequestRepository.Delete(leaveRequest);
-            return Unit.Value;
+            //return Unit.Value;
         }
     }
 }
