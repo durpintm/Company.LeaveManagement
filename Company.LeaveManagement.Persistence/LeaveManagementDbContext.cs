@@ -22,9 +22,10 @@ namespace Company.LeaveManagement.Persistence
             {
                 entry.Entity.LastModifiedDate = DateTime.Now;
 
-                if(entry.State == EntityState.Added)
+                if (entry.State == EntityState.Added)
                 {
                     entry.Entity.DateCreated = DateTime.Now;
+                    entry.Entity.CreatedBy = "durpintm";
                 }
             }
 
