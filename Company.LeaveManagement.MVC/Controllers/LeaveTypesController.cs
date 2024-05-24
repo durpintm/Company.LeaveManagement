@@ -1,7 +1,5 @@
 ﻿using Company.LeaveManagement.MVC.Contracts;
 using Company.LeaveManagement.MVC.Models;
-using Company.LeaveManagement.MVC.Services.Base;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Company.LeaveManagement.MVC.Controllers
@@ -16,13 +14,14 @@ namespace Company.LeaveManagement.MVC.Controllers
         }
         public async Task<ActionResult> Index()
         {
-            var model =await _leaveTypeService.GetLeaveTypes();
+            var model = await _leaveTypeService.GetLeaveTypes();
             return View(model);
         }
 
         public async Task<ActionResult> Details(int id)
         {
-            return View();
+            var model = await _leaveTypeService.GetLeaveTypeDetails(id);
+            return View(model);
         }
 
         public async Task<ActionResult> Create()
@@ -43,7 +42,7 @@ namespace Company.LeaveManagement.MVC.Controllers
                 }
                 ModelState.AddModelError("", errorMessage: response.ValidationErrors);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 ModelState.AddModelError("", ex.Message);
             }
@@ -53,40 +52,51 @@ namespace Company.LeaveManagement.MVC.Controllers
 
         public async Task<ActionResult> Edit(int id)
         {
-            return View();
+            var model = await _leaveTypeService.GetLeaveTypeDetails(id);
+            return View(model);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Edit(int id, IFormCollection collection)
+        public async Task<ActionResult> Edit(int id, LeaveTypeVM leaveType)
         {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _leaveTypeService.UpdateLeaveType(id, leaveType);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+            return View(leaveType);
         }
 
+        [HttpPost]
+        [ValidateAntiForgeryToken]
         public async Task<ActionResult> Delete(int id)
         {
-            return View();
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> Delete(int id, IFormCollection collection)
-        {
             try
             {
-                return RedirectToAction(nameof(Index));
+                var response = await _leaveTypeService.DeleteLeaveType(id);
+                if (response.Success)
+                {
+                    return RedirectToAction(nameof(Index));
+
+                }
+                ModelState.AddModelError("", response.ValidationErrors);
+
             }
-            catch
+            catch (Exception ex)
             {
-                return View();
+                ModelState.AddModelError("", ex.Message);
             }
+
+            return BadRequest();
         }
     }
 }

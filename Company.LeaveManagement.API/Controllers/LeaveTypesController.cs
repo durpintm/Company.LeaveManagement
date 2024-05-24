@@ -54,7 +54,7 @@ namespace Company.LeaveManagement.API.Controllers
         {
             var command = new DeleteLeaveTypeCommand { Id = id };
             await _mediator.Send(command);
-            return NoContent();
+            return Ok();
         }
     }
 }
